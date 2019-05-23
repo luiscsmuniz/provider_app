@@ -1,5 +1,5 @@
 <header class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
-  <a class="navbar-brand mb-0 h1" href="/">Provider</a>
+  <a class="navbar-brand mb-0 h1" href="/">Provider App</a>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -9,7 +9,6 @@
     <% if current_user %>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item"><%= link_to 'Meu Perfil', edit_user_registration_path, class: 'nav-link' %></li>
-        <li class="nav-item"><%= link_to 'Meu Projeto', projects_path, class: 'nav-link' %></li>
         <li class="nav-item"><%= link_to 'Minha Aplicação', oauth_applications_path, class: 'nav-link' %></li>
         <li class="nav-item"><%= link_to 'Aplicações Autorizadas', oauth_authorized_applications_path, class: 'nav-link' %></li>
         <li class="nav-item"><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-secondary'%></li>

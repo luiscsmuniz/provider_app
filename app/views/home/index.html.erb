@@ -2,7 +2,11 @@
 <div class="row">
   <div class="col">
     <% if current_user %>
-      <h1>Provider</h1>
+    <h3>Para utilizar o provedor</h3>
+      <ul>
+        <li>Registrar a aplicação em - Minha aplicação</li>
+        <li>Inserir o APP_ID & SECRET no Client App</li>
+      </ul>
     <% else %>
       <p><%= link_to 'Entrar', new_user_session_path, class: 'btn btn-primary' %></p> 
     <% end %>
