@@ -1,0 +1,116 @@
+pt:
+  activerecord:
+    attributes:
+      doorkeeper/application:
+        name: 'Nome'
+        redirect_uri: 'Redirecionamento de URI'
+    errors:
+      models:
+        doorkeeper/application:
+          attributes:
+            redirect_uri:
+              fragment_present: 'Não pode conter um fragmento.'
+              invalid_uri: 'Deve ser um URI válid.'
+              relative_uri: 'Deve ser uma URI absoluta.'
+              secured_uri: 'Deve ser um HTTPS/SSL URI.'
+              forbidden_uri: 'é proibido pelo servidor.'
+            scopes:
+              not_match_configured: "não corresponde configurado no servidor."
+
+  doorkeeper:
+    applications:
+      title: 
+        one: Aplicação
+        other: Aplicações
+      buttons:
+        destroy: Excluir
+        edit: Editar
+        submit: Enviar
+        new: Novo
+    
+      field:
+        name: Nome
+        callback_url: Url de retorno
+      
+      confirmations:
+        destroy: Tem certeza?
+    
+    authorizations:
+      buttons:
+        authorize: 'Autorizado'
+        deny: 'Negado'
+      error:
+        title: 'Ocorreu um erro'
+      new:
+        title: 'Autorização requerida'
+        prompt: 'Autorizar %{client_name} para usar a sua conta?'
+        able_to: 'Essa aplicação será capaz de'
+      show:
+        title: 'Código de autorização'
+
+    authorized_applications:
+      confirmations:
+        revoke: 'Tem certeza?'
+      buttons:
+        revoke: 'Revogar'
+      index:
+        title: 'Suas aplicações autorizadas'
+        application: 'Aplicação'
+        created_at: 'Criado em'
+        date_format: '%Y-%m-%d %H:%M:%S'
+
+    pre_authorization:
+      status: 'Pré autorização'
+
+    errors:
+      messages:
+        # Common error messages
+        invalid_request: 'A solicitação não possui um parâmetro obrigatório, inclui um valor de parâmetro não suportado ou está malformada.'
+        invalid_redirect_uri: "O redirecionamento solicitado é incorreto ou não corresponde ao URI de redirecionamento do cliente."
+        unauthorized_client: 'O cliente não está autorizado a executar essa solicitação usando esse método.'
+        access_denied: 'O proprietário do recurso ou o servidor de autorização negou a solicitação.'
+        invalid_scope: 'O escopo solicitado é inválido, desconhecido ou malformado.'
+        invalid_code_challenge_method: 'O método de desafio de código deve ser simples ou S256.'
+        server_error: 'O servidor de autorização encontrou uma condição inesperada que impediu o cumprimento da solicitação.'
+        temporarily_unavailable: 'Atualmente, o servidor de autorização não pode manipular a solicitação devido a uma sobrecarga ou manutenção temporária do servidor.'
+
+        # Configuration error messages
+        credential_flow_not_configured: 'Falha no fluxo de credenciais da senha do proprietário do recurso devido a desconfiguração do Doorkeeper.configure.resource_owner_from_credentials.'
+        resource_owner_authenticator_not_configured: 'O proprietário do recurso find falhou porque o Doorkeeper.configure.resource_owner_authenticator foi desconfigurado.'
+        admin_authenticator_not_configured: 'O acesso ao painel de administração é proibido devido ao Doorkeeper.configure.admin_authenticator ser desconfigurado.'
+
+        # Access grant errors
+        unsupported_response_type: 'O servidor de autorização não suporta esse tipo de resposta.'
+
+        # Access token errors
+        invalid_client: 'A autenticação do cliente falhou devido a um cliente desconhecido, nenhuma autenticação de cliente incluída ou método de autenticação não suportado.'
+        invalid_grant: 'A concessão de autorização fornecida é inválida, expirada, revogada, não corresponde ao URI de redirecionamento usado na solicitação de autorização ou foi emitida para outro cliente.'
+        unsupported_grant_type: 'O tipo de concessão de autorização não é suportado pelo servidor de autorização.'
+
+        invalid_token:
+          revoked: "O token de acesso foi revogado"
+          expired: "O token de acesso expirou"
+          unknown: "O token de acesso é inválido"
+
+    flash:
+      applications:
+        create:
+          notice: 'Aplicação criada.'
+        destroy:
+          notice: 'Aplicação excluída.'
+        update:
+          notice: 'Aplicação atualizada.'
+      authorized_applications:
+        destroy:
+          notice: 'Aplicação revogada.'
+
+    layouts:
+      admin:
+        title: 'Provider'
+        nav:
+          oauth2_provider: 'OAuth2 Provider'
+          applications: 'Aplicação'
+          home: 'Home'
+      application:
+        title: 'OAuth requirido'
+    

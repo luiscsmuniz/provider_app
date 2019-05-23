@@ -2,7 +2,7 @@
 
 source "http://rubygems.org"
 
-ruby "2.6.2"
+ruby "2.6.3"
 
 gem "rails", "~> 5.2"
 gem "doorkeeper", "~> 5.1.0"
@@ -13,6 +13,8 @@ gem "jquery-rails"
 
 gem "coderay"
 gem "redcarpet"
+gem 'mysql2'
+gem 'i18n'
 
 gem "uglifier"
 gem "pg", "~> 1.1", group: :production

@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col">
-    <h2>Project #<%= @project.id %></h2>
+    <h2>Projeto #<%= @project.id %></h2>
     <p>
       <strong>Name:</strong>
       <%= @project.name %>
@@ -11,7 +11,7 @@
       <%= @project.url %>
     </p>
 
-    <%= link_to 'Edit', edit_project_path(@project) %> |
-    <%= link_to 'Back', projects_path %>
+    <%= link_to 'Editar', edit_project_path(@project) %> |
+    <%= link_to 'Voltar', projects_path %>
   </div>
 </div>

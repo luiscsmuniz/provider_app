@@ -18,6 +18,11 @@ en:
               not_match_configured: "doesn't match configured on the server."
 
   doorkeeper:
+    applications:
+      buttons:
+        destroy: Destroy
+        submit: Submit
+
     authorizations:
       buttons:
         authorize: 'Authorize'
@@ -96,3 +101,5 @@ en:
           home: 'Home'
       application:
         title: 'OAuth authorization required'
+    
+    
