@@ -2,11 +2,9 @@
 <div class="row">
   <div class="col">
     <% if current_user %>
-    <h3>Para utilizar o provedor</h3>
-      <ul>
-        <li>Registrar a aplicação em - Minha aplicação</li>
-        <li>Inserir o APP_ID & SECRET no Client App</li>
-      </ul>
+    <h3>Clients</h3>
+        <button class="btn btn-primary" onclick='location.href = "http://localhost:3002/users/auth/gett"'>Comercial</button>
+        <button class="btn btn-primary" onclick='location.href = "http://localhost:3003/users/auth/gett"'>Arquivo</button>
     <% else %>
       <p><%= link_to 'Entrar', new_user_session_path, class: 'btn btn-primary' %></p> 
     <% end %>
