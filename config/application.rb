@@ -30,13 +30,13 @@ module DoorkeeperProvider
 
     config.to_prepare do
       # Only Applications list
-      Doorkeeper::ApplicationsController.layout 'application'
+      # Doorkeeper::ApplicationsController.layout 'application'
 
       # Only Authorization endpoint
       # Doorkeeper::AuthorizationsController.layout 'application'
 
       # Only Authorized Applications
-      # Doorkeeper::AuthorizedApplicationsController.layout 'application'
+      Doorkeeper::AuthorizedApplicationsController.layout 'application'
     end
 
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
