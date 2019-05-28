@@ -39,12 +39,12 @@ Doorkeeper.configure do
 
   # Authorization Code expiration time (default 10 minutes).
   #
-  authorization_code_expires_in 30.seconds
+  # authorization_code_expires_in 10.seconds
 
   # Access token expiration time (default 2 hours).
   # If you want to disable expiration, set this to nil.
   #
-  # access_token_expires_in 2.hours
+  access_token_expires_in 2.hours
 
   # Assign custom TTL for access tokens. Will be used instead of access_token_expires_in
   # option if defined. `context` has the following properties available
@@ -72,6 +72,7 @@ Doorkeeper.configure do
       {
         iss: 'Provider',
         iat: Time.current.utc.to_i,
+        exp: Time.current.utc.to_i + 2.hours,
   
         # @see JWT reserved claims - https://tools.ietf.org/html/draft-jones-json-web-token-07#page-7
         jti: SecureRandom.uuid,
