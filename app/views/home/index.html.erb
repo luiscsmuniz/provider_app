@@ -3,8 +3,8 @@
   <div class="col">
     <% if current_user %>
     <h3>Clients</h3>
-        <button class="btn btn-primary" onclick="window.open('http://localhost:3002/users/auth/gett', 'Arquivo','height=500,width=500')">Comercial</button>
-        <button class="btn btn-primary" onclick="window.open('http://localhost:3003/users/auth/gett', 'Arquivo','height=500,width=500')">Arquivo</button>
+        <button class="btn btn-primary" onclick="window.open('http://localhost:3002/users/auth/gett', 'Arquivo','height=500,width=500,top=200, left=600')">Comercial</button>
+        <button class="btn btn-primary" onclick="window.open('http://localhost:3003/users/auth/gett', 'Arquivo','height=500,width=500,top=200, left=600')">Arquivo</button>
     <% else %>
       <p><%= link_to 'Entrar', new_user_session_path, class: 'btn btn-primary' %></p> 
     <% end %>

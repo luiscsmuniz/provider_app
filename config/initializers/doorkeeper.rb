@@ -68,11 +68,12 @@ Doorkeeper.configure do
     #     { token: "RANDOM-TOKEN" }
     token_payload do |opts|
       user = User.find(opts[:resource_owner_id])
+      time_token = Time.current.utc.to_i
   
       {
         iss: 'Provider',
-        iat: Time.current.utc.to_i,
-        exp: Time.current.utc.to_i + 2.hours,
+        iat: time_token,
+        exp: time_token + 10.seconds,
   
         # @see JWT reserved claims - https://tools.ietf.org/html/draft-jones-json-web-token-07#page-7
         jti: SecureRandom.uuid,
