@@ -3,7 +3,7 @@
 - Registrar a aplicação e inserir no [client](https://github.com/luiscsmuniz/client_app)
 
 
-- Para fazer a chamada via curl é preciso passar os parametros de `client_id`, `client_secret`, `grant_type=password`, `username` e `password`
+- Para fazer a login via API é preciso passar os parametros de `client_id`, `client_secret`, `grant_type=password`, `username` e `password`
 
 exemplo 
 
