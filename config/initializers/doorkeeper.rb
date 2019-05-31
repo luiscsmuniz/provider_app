@@ -6,7 +6,17 @@ Doorkeeper.configure do
   resource_owner_authenticator do
     current_user || warden.authenticate!(scope: :user)
   end
-
+  
+  # CODIGO PARA VALIDAR O LOGIN VIA API
+  # WIKI: https://github.com/doorkeeper-gem/doorkeeper/wiki/Using-Resource-Owner-Password-Credentials-flow
+  resource_owner_from_credentials do |routes|
+    user = User.find_for_database_authentication(email: params[:username])
+    if user&.valid_for_authentication? { user.valid_password?(params[:password]) } && user&.active_for_authentication?
+      request.env['warden'].set_user(user, scope: :user, store: false)
+      user
+    end
+  end
+  # ------ FIM
   # If you didn't skip applications controller from Doorkeeper routes in your application routes.rb
   # file then you need to declare this block in order to restrict access to the web interface for
   # adding oauth authorized applications. In other case it will return 403 Forbidden response
@@ -73,7 +83,7 @@ Doorkeeper.configure do
       {
         iss: 'Provider',
         iat: time_token,
-        exp: time_token + 10.seconds,
+        exp: time_token + 2.hours,
   
         # @see JWT reserved claims - https://tools.ietf.org/html/draft-jones-json-web-token-07#page-7
         jti: SecureRandom.uuid,
@@ -311,7 +321,7 @@ Doorkeeper.configure do
   #   http://tools.ietf.org/html/rfc6819#section-4.4.2
   #   http://tools.ietf.org/html/rfc6819#section-4.4.3
   #
-  # grant_flows %w[authorization_code client_credentials]
+  grant_flows %w[authorization_code client_credentials password implicit]
 
   # Hook into the strategies' request & response life-cycle in case your
   # application needs advanced customization or logging:
