@@ -7,10 +7,11 @@ ruby "2.6.3"
 gem "rails", "~> 5.2"
 gem "doorkeeper", "~> 5.1.0"
 gem "devise", "~> 4.6"
-
+gem 'doorkeeper-i18n'
+gem 'doorkeeper-jwt'
 gem "faker"
 gem "jquery-rails"
-
+gem 'rack-cors'
 gem "coderay"
 gem "redcarpet"
 gem 'mysql2'
