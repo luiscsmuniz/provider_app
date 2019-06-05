@@ -11,7 +11,7 @@ gem 'doorkeeper-i18n'
 gem 'doorkeeper-jwt'
 gem "faker"
 gem "jquery-rails"
-
+gem 'rack-cors'
 gem "coderay"
 gem "redcarpet"
 gem 'mysql2'

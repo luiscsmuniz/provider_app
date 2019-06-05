@@ -321,7 +321,7 @@ Doorkeeper.configure do
   #   http://tools.ietf.org/html/rfc6819#section-4.4.2
   #   http://tools.ietf.org/html/rfc6819#section-4.4.3
   #
-  grant_flows %w[authorization_code client_credentials password implicit]
+  grant_flows %w[authorization_code client_credentials password]
 
   # Hook into the strategies' request & response life-cycle in case your
   # application needs advanced customization or logging:
