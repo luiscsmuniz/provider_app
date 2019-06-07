@@ -77,7 +77,7 @@ Doorkeeper.configure do
     # about the user. Defaults to a randomly generated token in a hash:
     #     { token: "RANDOM-TOKEN" }
     token_payload do |opts|
-      user = User.find(opts[:resource_owner_id])
+      data = OrganizationsUser.find_by(user_id: opts[:resource_owner_id])
       time_token = Time.current.utc.to_i
   
       {
@@ -89,8 +89,19 @@ Doorkeeper.configure do
         jti: SecureRandom.uuid,
   
         user: {
-          id: user.id,
-          email: user.email
+          id: data.user.id,
+          email: data.user.email,
+          organization: data.organization.name,
+          role: data.role.role,
+          permission: {
+            module: {
+              name: data.role.policy.first.resources_action.resource.system.name,
+              action: [
+                data.role.policy.first.resources_action.action.name,
+                data.role.policy.second.resources_action.action.name,
+              ]
+            }
+          }
         }
       }
     end
