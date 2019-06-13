@@ -77,32 +77,44 @@ Doorkeeper.configure do
     # about the user. Defaults to a randomly generated token in a hash:
     #     { token: "RANDOM-TOKEN" }
     token_payload do |opts|
-      data = OrganizationsUser.find_by(user_id: opts[:resource_owner_id])
+      data = OrganizationsUser.where(user_id: opts[:resource_owner_id]).map do |d|
+        permission = System.all.map do |sys|
+          resource = Resource.where(system_id: sys.id).map do |rsc|
+            actions = d.role.policy.select{ |s| s.resources_action.resource.id == rsc.id }.map do |p|
+              p.resources_action.action.name
+            end
+
+            {
+              name: rsc.name,
+              actions: actions
+            }
+          end
+
+          {
+            system: sys.name,
+            resource: resource
+          }
+        end
+
+        {
+          uid: d.user.id,
+          organization: d.organization.name,
+          email: d.user.email,
+          role: d.role.role,
+          permission: permission
+        }
+      end
+
       time_token = Time.current.utc.to_i
   
       {
         iss: 'Provider',
-        iat: time_token,
-        exp: time_token + 2.hours,
+        iat: time_token.to_i,
+        exp: (time_token + 2.hours).to_i,
   
         # @see JWT reserved claims - https://tools.ietf.org/html/draft-jones-json-web-token-07#page-7
         jti: SecureRandom.uuid,
-  
-        user: {
-          id: data.user.id,
-          email: data.user.email,
-          organization: data.organization.name,
-          role: data.role.role,
-          permission: {
-            module: {
-              name: data.role.policy.first.resources_action.resource.system.name,
-              action: [
-                data.role.policy.first.resources_action.action.name,
-                data.role.policy.second.resources_action.action.name,
-              ]
-            }
-          }
-        }
+        data: data
       }
     end
   
